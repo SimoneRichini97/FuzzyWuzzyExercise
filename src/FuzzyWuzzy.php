@@ -48,7 +48,7 @@ class FuzzyWuzzy
         if ($number % 7 === 0) {
             return FUZZY . WUZZY;
         }
-        return '';
+        return strval($number);
     }
 
 }

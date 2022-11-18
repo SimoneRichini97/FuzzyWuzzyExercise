@@ -23,74 +23,74 @@ class FuzzyWuzzyTest extends TestCase
         $fuzzyWuzzy->getResult(array(1, 2, -3, 4, 5, 6));
     }
 
-    public function testShouldReturnEmptyString(): void
+    public function testShouldReturnNumbers(): void
     {
         $fuzzyWuzzy = new FuzzyWuzzy();
 
-        $this->assertEquals('', $fuzzyWuzzy->getResult(array(1, 2, 4, 8)));
+        $this->assertEquals('1248', $fuzzyWuzzy->getResult(array(1, 2, 4, 8)));
     }
 
     public function testShouldReturnFuzzy(): void
     {
         $fuzzyWuzzy = new FuzzyWuzzy();
 
-        $this->assertEquals('Fuzzy', $fuzzyWuzzy->getResult(array(1, 2, 6, 8)));
+        $this->assertEquals('12Fuzzy8', $fuzzyWuzzy->getResult(array(1, 2, 6, 8)));
     }
 
     public function testShouldReturnFuzzyWuzzy(): void
     {
         $fuzzyWuzzy = new FuzzyWuzzy();
 
-        $this->assertEquals('FuzzyWuzzy', $fuzzyWuzzy->getResult(array(1, 2, 6, 5, 8)));
+        $this->assertEquals('12FuzzyWuzzy8', $fuzzyWuzzy->getResult(array(1, 2, 6, 5, 8)));
     }
 
     public function testShouldReturnFuzzyWuzzyFuzzy(): void
     {
         $fuzzyWuzzy = new FuzzyWuzzy();
 
-        $this->assertEquals('FuzzyWuzzyFuzzy', $fuzzyWuzzy->getResult(array(1, 7, 4, 6)));
+        $this->assertEquals('1FuzzyWuzzy4Fuzzy', $fuzzyWuzzy->getResult(array(1, 7, 4, 6)));
     }
 
     public function testShouldReturnFuzzyWuzzyWuzzy(): void
     {
         $fuzzyWuzzy = new FuzzyWuzzy();
 
-        $this->assertEquals('FuzzyWuzzyWuzzy', $fuzzyWuzzy->getResult(array(1, 7, 4, 2, 5)));
+        $this->assertEquals('1FuzzyWuzzy42Wuzzy', $fuzzyWuzzy->getResult(array(1, 7, 4, 2, 5)));
     }
 
     public function testShouldReturnFuzzyWuzzyWuzzyFuzzy(): void
     {
         $fuzzyWuzzy = new FuzzyWuzzy();
 
-        $this->assertEquals('FuzzyWuzzyWuzzyFuzzy', $fuzzyWuzzy->getResult(array(1, 7, 4, 2, 5, 6)));
+        $this->assertEquals('1FuzzyWuzzy42WuzzyFuzzy', $fuzzyWuzzy->getResult(array(1, 7, 4, 2, 5, 6)));
     }
 
     public function testShouldReturnWuzzyFuzzyFuzzy(): void
     {
         $fuzzyWuzzy = new FuzzyWuzzy();
 
-        $this->assertEquals('WuzzyFuzzyFuzzy', $fuzzyWuzzy->getResult(array(15, 2, 3)));
+        $this->assertEquals('WuzzyFuzzy2Fuzzy', $fuzzyWuzzy->getResult(array(15, 2, 3)));
     }
 
     public function testShouldReturnWuzzyFuzzyFuzzyWuzzyWuzzy(): void
     {
         $fuzzyWuzzy = new FuzzyWuzzy();
 
-        $this->assertEquals('WuzzyFuzzyFuzzyWuzzyWuzzy', $fuzzyWuzzy->getResult(array(2, 105, 5)));
+        $this->assertEquals('2WuzzyFuzzyFuzzyWuzzyWuzzy', $fuzzyWuzzy->getResult(array(2, 105, 5)));
     }
 
     public function testShouldReturnWuzzyFuzzyWuzzyFuzzyWuzzy(): void
     {
         $fuzzyWuzzy = new FuzzyWuzzy();
 
-        $this->assertEquals('WuzzyFuzzyWuzzyFuzzyWuzzy', $fuzzyWuzzy->getResult(array(21, 4, 14)));
+        $this->assertEquals('WuzzyFuzzyWuzzy4FuzzyWuzzy', $fuzzyWuzzy->getResult(array(21, 4, 14)));
     }
 
     public function testShouldReturnFuzzyWuzzyWuzzyWuzzy(): void
     {
         $fuzzyWuzzy = new FuzzyWuzzy();
 
-        $this->assertEquals('FuzzyWuzzyWuzzyWuzzy', $fuzzyWuzzy->getResult(array(70, 2, 2, 2, 10)));
+        $this->assertEquals('FuzzyWuzzyWuzzy222Wuzzy', $fuzzyWuzzy->getResult(array(70, 2, 2, 2, 10)));
     }
 
 }
