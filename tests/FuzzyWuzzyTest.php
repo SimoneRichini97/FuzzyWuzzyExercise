@@ -65,4 +65,32 @@ class FuzzyWuzzyTest extends TestCase
         $this->assertEquals('FuzzyWuzzyWuzzyFuzzy', $fuzzyWuzzy->getResult(array(1, 7, 4, 2, 5, 6)));
     }
 
+    public function testShouldReturnWuzzyFuzzyFuzzy(): void
+    {
+        $fuzzyWuzzy = new FuzzyWuzzy();
+
+        $this->assertEquals('WuzzyFuzzyFuzzy', $fuzzyWuzzy->getResult(array(15, 2, 3)));
+    }
+
+    public function testShouldReturnWuzzyFuzzyFuzzyWuzzyWuzzy(): void
+    {
+        $fuzzyWuzzy = new FuzzyWuzzy();
+
+        $this->assertEquals('WuzzyFuzzyFuzzyWuzzyWuzzy', $fuzzyWuzzy->getResult(array(2, 105, 5)));
+    }
+
+    public function testShouldReturnWuzzyFuzzyWuzzyFuzzyWuzzy(): void
+    {
+        $fuzzyWuzzy = new FuzzyWuzzy();
+
+        $this->assertEquals('WuzzyFuzzyWuzzyFuzzyWuzzy', $fuzzyWuzzy->getResult(array(21, 4, 14)));
+    }
+
+    public function testShouldReturnFuzzyWuzzyWuzzyWuzzy(): void
+    {
+        $fuzzyWuzzy = new FuzzyWuzzy();
+
+        $this->assertEquals('FuzzyWuzzyWuzzyWuzzy', $fuzzyWuzzy->getResult(array(70, 2, 2, 2, 10)));
+    }
+
 }

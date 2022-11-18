@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace FuzzyWuzzy;
 
+const FUZZY = 'Fuzzy';
+const WUZZY = 'Wuzzy';
+
 class FuzzyWuzzy
 {
     public function say(int $number): string
@@ -24,14 +27,26 @@ class FuzzyWuzzy
         if ($number <= 0) {
             throw new \InvalidArgumentException('Found number <= 0');
         }
+        if ($number % 3 === 0 && $number % 5 === 0 && $number % 7 === 0) {
+            return WUZZY . FUZZY . FUZZY . WUZZY;
+        }
+        if ($number % 3 === 0 && $number % 7 === 0) {
+            return WUZZY . FUZZY . WUZZY;
+        }
+        if ($number % 5 === 0 && $number % 7 === 0) {
+            return FUZZY . WUZZY . WUZZY;
+        }
+        if ($number % 3 === 0 && $number % 5 === 0) {
+            return WUZZY . FUZZY;
+        }
         if ($number % 3 === 0) {
-            return 'Fuzzy';
+            return FUZZY;
         }
         if ($number % 5 === 0) {
-            return 'Wuzzy';
+            return WUZZY;
         }
         if ($number % 7 === 0) {
-            return 'FuzzyWuzzy';
+            return FUZZY . WUZZY;
         }
         return '';
     }
